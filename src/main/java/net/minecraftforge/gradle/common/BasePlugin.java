@@ -110,7 +110,7 @@ public abstract class BasePlugin<K extends BaseExtension> implements Plugin<Proj
             public void execute(Project proj)
             {
                 addMavenRepo(proj, "forge", Constants.FORGE_MAVEN);
-                proj.getRepositories().mavenCentral();
+                addMavenRepo(proj, "mavenCentrl", "https://repo1.maven.org/maven2/");
                 addMavenRepo(proj, "minecraft", Constants.LIBRARY_URL);
             }
         });

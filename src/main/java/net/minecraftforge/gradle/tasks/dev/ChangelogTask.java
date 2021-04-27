@@ -59,6 +59,9 @@ public class ChangelogTask extends DefaultTask
     @TaskAction
     public void doTask() throws IOException
     {
+        if (1 == 1) {
+            return;
+        }
         if (getAuthName() != null && getAuthPassword() != null)
         {
             String raw = getAuthName() + ":" + getAuthPassword();

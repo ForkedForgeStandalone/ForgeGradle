@@ -21,7 +21,7 @@ repositories {
     mavenLocal()
     maven {
         name = "forge"
-        url = "http://files.minecraftforge.net/maven"
+        url = "https://teamopenindustry.cc/maven"
     }
     maven {
         // because Srg2Source needs an eclipse dependency.
@@ -128,15 +128,15 @@ test {
 
 uploadArchives {
     repositories {
-        if (project.hasProperty("forgeMavenPass")) {
+        if (project.hasProperty("filesmaven")) {
             logger.info('Publishing to files server')
 
             mavenDeployer {
                 configuration = configurations.deployerJars
 
-				repository(url: "https://files.minecraftforge.net/maven/manage/upload") {
-					authentication(userName: "forge", password: project.getProperty('forgeMavenPass'))
-				}
+                repository(url: project.filesmaven.url) {
+                    authentication(userName: project.filesmaven.username, privateKey: project.filesmaven.key)
+                }
 
                 pom {
                     groupId = project.group

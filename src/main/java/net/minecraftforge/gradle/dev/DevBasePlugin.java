@@ -78,19 +78,19 @@ public abstract class DevBasePlugin extends BasePlugin<DevExtension>
         if (hasInstaller())
         {
             // apply L4J
-            this.applyExternalPlugin("launch4j");
+            //this.applyExternalPlugin("launch4j");
 
-            if (project.getTasks().findByName("uploadArchives") != null)
+            /*if (project.getTasks().findByName("uploadArchives") != null)
             {
                 project.getTasks().getByName("uploadArchives").dependsOn("launch4j");
-            }
+            }*/
 
             task1 = makeTask("downloadBaseInstaller", DownloadTask.class);
             {
                 task1.setOutput(delayedFile(DevConstants.INSTALLER_BASE));
                 task1.setUrl(delayedString(DevConstants.INSTALLER_URL));
             }
-
+/*
             task1 = makeTask("downloadL4J", DownloadTask.class);
             {
                 task1.setOutput(delayedFile(DevConstants.LAUNCH4J));
@@ -102,7 +102,7 @@ public abstract class DevBasePlugin extends BasePlugin<DevExtension>
                 task.dependsOn("downloadL4J");
                 task.from(delayedFile(DevConstants.LAUNCH4J));
                 task.into(delayedFile(DevConstants.LAUNCH4J_DIR));
-            }
+            }*/
         }
 
         task1 = makeTask("updateJson", DownloadTask.class);
@@ -274,7 +274,7 @@ public abstract class DevBasePlugin extends BasePlugin<DevExtension>
     {
         super.afterEvaluate();
 
-        configureLaunch4J();
+        //configureLaunch4J();
 
         // set obfuscate extras
         Task t = project.getTasks().getByName("obfuscateJar");
